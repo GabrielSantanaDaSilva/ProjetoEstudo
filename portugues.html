@@ -34,9 +34,9 @@
       
     </tr>
     <tr>
-      <th scope="row"><button class="btn d-flex justify-content-start ">C)</button></th>
-      <td class="">John</td>
-
+      <th scope="row" class="d-flex justify-content-center mt-3"><input type="checkbox" name="botao" id="meuBotao" ><label for="meuBotao">C</label></th>
+      <td>John</td>
+        
       
     </tr>
 
@@ -62,4 +62,14 @@
 
     </footer>
 </body>
+
+<script>
+
+    const meuBotao = document.getElementById('meuBotao');
+
+    meuBotao.addEventListener('click', function() {
+        meuBotao.classList.toggle('btn-primary');
+    });   
+
+</script>
 </html>
