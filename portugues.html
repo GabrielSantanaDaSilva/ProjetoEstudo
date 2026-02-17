@@ -8,11 +8,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
+    <header class="">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
+      </div>
     </header>
- 
-    <table class="table">
+ <div class="container">
+    <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">Questão X</th>
@@ -22,19 +26,19 @@
   </thead>
   <tbody class="table-group-divider ">
     <tr>
-      <th scope="row" class="col-1"><button class="btn d-flex justify-content-start ">A)</button></th>
+      <th scope="row" class="col-1"> <input type="radio" name="botao" id="meuBotao" ><label for="meuBotao">&nbsp; A)</label> </th>
       <td class=" ">Mark</td>
      
      
     </tr>
     <tr>
-      <th scope="row"><button class="btn d-flex justify-content-start ">B)</button></th>
+      <th scope="row"><input type="radio" name="botao" id="meuBotao" ><label for="meuBotao">&nbsp; B)</label></th>
       <td class="">Jacob</td>
 
       
     </tr>
     <tr>
-      <th scope="row" class="d-flex justify-content-center mt-3"><input type="checkbox" name="botao" id="meuBotao" ><label for="meuBotao">C</label></th>
+      <th scope="row"><input type="radio" name="botao" id="meuBotao" ><label for="meuBotao">&nbsp; C)</label></th>
       <td>John</td>
         
       
@@ -42,22 +46,16 @@
 
       </tr>
     <tr>
-      <th scope="row"><button class="btn d-flex justify-content-start ">D)</button></th>
+      <th scope="row"><input type="radio" name="botao" id="meuBotao" ><label for="meuBotao">&nbsp; D)</label></th>
       <td class="">John</td>
 
       
     </tr>
 
       </tr>
-    <tr>
-      <th scope="row"><button class="btn d-flex justify-content-start ">E)</button></th>
-      <td class="">John</td>
-
-      
-    </tr>
   </tbody>
-</table>
-
+ </table>
+</div>
     <footer>
 
     </footer>
