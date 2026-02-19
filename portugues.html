@@ -8,10 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header class="">
+    <header class="container">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <h5 class="card-title">Simulado de X</h5>
+          <p class="card-text" id="tempo">tempo: </p>
 
       </div>
     </header>
@@ -63,11 +63,25 @@
 
 <script>
 
-    const meuBotao = document.getElementById('meuBotao');
+var tempo = 60;
+var display = document.getElementById('tempo');
+var startTime = Date.now();
+var timerInterval;
 
-    meuBotao.addEventListener('click', function() {
-        meuBotao.classList.toggle('btn-primary');
-    });   
+function updateTimer() {
+    var elapsed = Math.floor((Date.now() - startTime) / 1000);
+    var minutes = Math.floor(elapsed / 60);
+    var seconds = elapsed % 60;
+    display.textContent = 'Tempo decorrido: ' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+}
+
+function startTimer() {
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+}
+
+window.onload = startTimer;
+
 
 </script>
 </html>
