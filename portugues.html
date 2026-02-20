@@ -61,6 +61,8 @@
     </footer>
 </body>
 
+
+
 <script>
 
 var tempo = 60;
@@ -70,9 +72,10 @@ var timerInterval;
 
 function updateTimer() {
     var elapsed = Math.floor((Date.now() - startTime) / 1000);
-    var minutes = Math.floor(elapsed / 60);
+    var hours = Math.floor(elapsed / 3600);
+    var minutes = Math.floor((elapsed % 3600) / 60);
     var seconds = elapsed % 60;
-    display.textContent = 'Tempo decorrido: ' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+    display.textContent = 'Tempo decorrido: ' + (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
 }
 
 function startTimer() {
@@ -81,7 +84,5 @@ function startTimer() {
 }
 
 window.onload = startTimer;
-
-
 </script>
 </html>
