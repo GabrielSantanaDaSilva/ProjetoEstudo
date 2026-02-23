@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulado</title>
+    <title>Simulado - Matemática</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -11,7 +11,7 @@
 
 <header class="container mt-4">
     <div class="card p-3">
-        <h3 id="tituloSimulado">Simulado</h3>
+        <h3>Simulado de Matemática</h3>
         <p id="tempo">Tempo: 00:00:00</p>
     </div>
 </header>
@@ -26,34 +26,28 @@
 
 <script>
 
+const MATERIA = "Matemática";
+
 const state = {
     questoes: [],
     respostas: {},
     startTime: Date.now()
 };
 
-// ==========================
-// TIMER
-// ==========================
-
 function iniciarTimer() {
     setInterval(() => {
         const elapsed = Math.floor((Date.now() - state.startTime) / 1000);
 
-        const hours = Math.floor(elapsed / 3600);
-        const minutes = Math.floor((elapsed % 3600) / 60);
-        const seconds = elapsed % 60;
+        const h = Math.floor(elapsed / 3600);
+        const m = Math.floor((elapsed % 3600) / 60);
+        const s = elapsed % 60;
 
         document.getElementById("tempo").textContent =
-            `Tempo: ${String(hours).padStart(2, '0')}:` +
-            `${String(minutes).padStart(2, '0')}:` +
-            `${String(seconds).padStart(2, '0')}`;
+            `Tempo: ${String(h).padStart(2,'0')}:` +
+            `${String(m).padStart(2,'0')}:` +
+            `${String(s).padStart(2,'0')}`;
     }, 1000);
 }
-
-// ==========================
-// BUSCAR SIMULADO
-// ==========================
 
 async function carregarSimulado() {
     try {
@@ -61,31 +55,21 @@ async function carregarSimulado() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                materia: "Matemática",
+                materia: MATERIA,
                 quantidade: 5
             })
         });
-
-        if (!response.ok) {
-            throw new Error("Erro ao buscar simulado");
-        }
 
         state.questoes = await response.json();
         renderizarQuestoes();
 
     } catch (error) {
-        console.error(error);
         document.getElementById("questoes").innerHTML =
             `<div class="alert alert-danger">Erro ao carregar questões.</div>`;
     }
 }
 
-// ==========================
-// RENDERIZAR QUESTÕES
-// ==========================
-
 function renderizarQuestoes() {
-
     const container = document.getElementById("questoes");
     container.innerHTML = "";
 
@@ -94,41 +78,34 @@ function renderizarQuestoes() {
         const card = document.createElement("div");
         card.className = "card mb-3 p-3";
 
-        const alternativasHTML = q.alternativas.map(alt => `
+        const alternativas = q.alternativas.map(alt => `
             <div class="form-check">
                 <input class="form-check-input"
                     type="radio"
-                    name="questao${index}"
+                    name="q${index}"
                     value="${alt.charAt(0)}"
-                    data-index="${index}"
-                >
-                <label class="form-check-label">
-                    ${alt}
-                </label>
+                    data-index="${index}">
+                <label class="form-check-label">${alt}</label>
             </div>
         `).join("");
 
         card.innerHTML = `
             <h5>${index + 1}) ${q.pergunta}</h5>
-            ${alternativasHTML}
+            ${alternativas}
         `;
 
         container.appendChild(card);
     });
 }
 
-// ==========================
-// EVENTOS
-// ==========================
-
 document.addEventListener("change", (e) => {
     if (e.target.matches(".form-check-input")) {
-        const index = e.target.dataset.index;
-        state.respostas[index] = e.target.value;
+        state.respostas[e.target.dataset.index] = e.target.value;
     }
 });
 
 document.getElementById("btnFinalizar").addEventListener("click", () => {
+
     let acertos = 0;
 
     state.questoes.forEach((q, index) => {
@@ -139,10 +116,6 @@ document.getElementById("btnFinalizar").addEventListener("click", () => {
 
     alert(`Você acertou ${acertos} de ${state.questoes.length}`);
 });
-
-// ==========================
-// INICIALIZAÇÃO
-// ==========================
 
 window.addEventListener("DOMContentLoaded", () => {
     iniciarTimer();
