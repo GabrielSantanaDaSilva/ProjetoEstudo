@@ -107,14 +107,30 @@ document.addEventListener("change", (e) => {
 document.getElementById("btnFinalizar").addEventListener("click", () => {
 
     let acertos = 0;
+    const erros = [];
 
     state.questoes.forEach((q, index) => {
         if (state.respostas[index] === q.resposta_correta) {
             acertos++;
+        } else {
+            erros.push({
+                pergunta: q.pergunta,
+                resposta_correta: q.resposta_correta,
+                sugestao: q.sugestao,
+                resposta_usuario: state.respostas[index] || "Não respondeu"
+            });
         }
     });
 
-    alert(`Você acertou ${acertos} de ${state.questoes.length}`);
+    const resultado = {
+        materia: MATERIA,
+        acertos: acertos,
+        total: state.questoes.length,
+        erros: erros
+    };
+
+    localStorage.setItem("resultadoSimulado", JSON.stringify(resultado));
+    window.location.href = "resultado.html";
 });
 
 window.addEventListener("DOMContentLoaded", () => {

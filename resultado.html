@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Simulado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="card p-4">
+        <h2 class="text-center">Resultado do Simulado</h2>
+        <div id="resultado"></div>
+    </div>
+</div>
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+    const resultado = JSON.parse(localStorage.getItem("resultadoSimulado"));
+    if (!resultado) {
+        document.getElementById("resultado").innerHTML = "<p class='text-danger'>Nenhum resultado encontrado.</p>";
+        return;
+    }
+
+    let html = `
+        <h4>Matéria: ${resultado.materia}</h4>
+        <h5>Você acertou ${resultado.acertos} de ${resultado.total} questões.</h5>
+    `;
+
+    if (resultado.erros.length > 0) {
+        html += `<h5 class="mt-4">Questões Erradas:</h5>`;
+        resultado.erros.forEach((erro, index) => {
+            html += `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h6>${index + 1}. ${erro.pergunta}</h6>
+                        <p><strong>Sua resposta:</strong> ${erro.resposta_usuario}</p>
+                        <p><strong>Resposta correta:</strong> ${erro.resposta_correta}</p>
+                        <p><strong>Sugestão:</strong> ${erro.sugestao}</p>
+                    </div>
+                </div>
+            `;
+        });
+    } else {
+        html += `<p class="text-success mt-3">Parabéns! Você acertou todas as questões.</p>`;
+    }
+
+    document.getElementById("resultado").innerHTML = html;
+});
+</script>
+
+</body>
+</html>

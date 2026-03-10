@@ -38,6 +38,7 @@ app.post("/gerar-simulado", async (req, res) => {
     - 4 alternativas
     - Apenas 1 correta
     - Não repetir perguntas
+    - Para cada questão, inclua uma sugestão de resolução
 
     Responda APENAS com JSON válido no formato:
 
@@ -45,7 +46,8 @@ app.post("/gerar-simulado", async (req, res) => {
       {
         "pergunta": "texto da pergunta",
         "alternativas": ["A) ...", "B) ...", "C) ...", "D) ..."],
-        "resposta_correta": "A"
+        "resposta_correta": "A",
+        "sugestao": "Sugestão de como resolver"
       }
     ]
     `;
