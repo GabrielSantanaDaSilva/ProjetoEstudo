@@ -31,7 +31,7 @@ const MATERIA = "Português";
 const state = {
     questoes: [],
     respostas: {},
-    startTime: Date.now()
+    startTime: null
 };
 
 // ==========================
@@ -39,6 +39,7 @@ const state = {
 // ==========================
 
 function iniciarTimer() {
+    state.startTime = Date.now();
     setInterval(() => {
         const elapsed = Math.floor((Date.now() - state.startTime) / 1000);
 
@@ -117,6 +118,9 @@ function renderizarQuestoes() {
 
         container.appendChild(card);
     });
+
+    // Iniciar o timer apenas após as questões serem renderizadas
+    iniciarTimer();
 }
 
 // ==========================
@@ -139,11 +143,15 @@ document.getElementById("btnFinalizar").addEventListener("click", () => {
         if (state.respostas[index] === q.resposta_correta) {
             acertos++;
         } else {
+            const respostaCorretaTexto = q.alternativas.find(alt => alt.charAt(0) === q.resposta_correta) || q.resposta_correta;
+            const respostaUsuarioTexto = state.respostas[index] ? q.alternativas.find(alt => alt.charAt(0) === state.respostas[index]) || state.respostas[index] : "Não respondeu";
             erros.push({
                 pergunta: q.pergunta,
                 resposta_correta: q.resposta_correta,
+                resposta_correta_texto: respostaCorretaTexto,
                 sugestao: q.sugestao,
-                resposta_usuario: state.respostas[index] || "Não respondeu"
+                resposta_usuario: state.respostas[index] || "Não respondeu",
+                resposta_usuario_texto: respostaUsuarioTexto
             });
         }
     });
@@ -164,7 +172,6 @@ document.getElementById("btnFinalizar").addEventListener("click", () => {
 // ==========================
 
 window.addEventListener("DOMContentLoaded", () => {
-    iniciarTimer();
     carregarSimulado();
 });
 

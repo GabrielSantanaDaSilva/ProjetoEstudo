@@ -35,8 +35,8 @@ window.addEventListener("DOMContentLoaded", () => {
                 <div class="card mb-3">
                     <div class="card-body">
                         <h6>${index + 1}. ${erro.pergunta}</h6>
-                        <p><strong>Sua resposta:</strong> ${erro.resposta_usuario}</p>
-                        <p><strong>Resposta correta:</strong> ${erro.resposta_correta}</p>
+                        <p><strong>Sua resposta:</strong> ${erro.resposta_usuario_texto || erro.resposta_usuario}</p>
+                        <p><strong>Resposta correta:</strong> ${erro.resposta_correta_texto || erro.resposta_correta}</p>
                         <p><strong>Sugestão:</strong> ${erro.sugestao}</p>
                     </div>
                 </div>
@@ -49,6 +49,6 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("resultado").innerHTML = html;
 });
 </script>
-
+ <a href="index.html"> voltar</a>
 </body>
 </html>
