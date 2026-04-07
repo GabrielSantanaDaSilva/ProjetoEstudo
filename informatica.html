@@ -142,6 +142,17 @@ document.getElementById("btnFinalizar").addEventListener("click", () => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
+    // Mostrar loading enquanto carrega as questões
+    document.getElementById("questoes").innerHTML = `
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+            <div class="text-center">
+                <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Carregando questões...</span>
+                </div>
+                <p class="mt-2 text-muted">Carregando questões...</p>
+            </div>
+        </div>
+    `;
     carregarSimulado();
 });
 
