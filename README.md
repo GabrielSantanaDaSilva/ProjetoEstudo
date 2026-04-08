@@ -31,31 +31,34 @@ O **SimuIAdos** é uma plataforma web Full Stack que transforma o processo de es
 ---
 
 ## 🏗️ Como Executar o Projeto
+Clone o repositório:
 
-1. **Clone o repositório:**
-   ```bash
-   git clone https://github.com/GabrielSantanaDaSilva/ProjetoEstudo.git
-2. **Instale as dependências:**
+```Bash
+git clone https://github.com/GabrielSantanaDaSilva/ProjetoEstudo.git
+```
+Instale as dependências:
 
-Bash
+```Bash
 npm install
+```
 Configure as variáveis de ambiente:
-Crie um arquivo .env na raiz do projeto e adicione sua chave da API do Gemini:
 
-entre no Google Studio AI -> https://aistudio.google.com/ e gere sua chave de API 
+Acesse o Google AI Studio para gerar sua chave de API.
 
-Depois coloque em seu .env os seguintes codigos:
+Crie um arquivo .env na raiz do projeto e adicione:
 
+Entre No google studio AI (https://aistudio.google.com/) e gere a sua chave de API do gemini e coloque o codigo abaixo no arquivo .env:
+```bash
 GEMINI_API_KEY=sua_chave_aqui
-
 PORT=3000
+```
 
-3. **Inicie o servidor:**
-- entre na pasta Backend pelo Bash (cd backend)
-  
-Bash
+Entre na pasta do backend e execute o servidor:
+
+```Bash
+cd backend
 node server.js
+```
 
-Acesse no navegador ou Utilize a extensão live server (Você precisa iniciar o servidor pelo node para a IA funcionar) :
-
-http://localhost:3000
+Acesse no navegador:
+http://localhost:3000 ou Instale a extensão "Live Server" e rode ela.
