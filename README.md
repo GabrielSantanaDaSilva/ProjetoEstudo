@@ -49,3 +49,10 @@ Depois coloque em seu .env os seguintes codigos:
 GEMINI_API_KEY=sua_chave_aqui
 
 PORT=3000
+
+Inicie o servidor:
+- entre na pasta Backend pelo Bash (cd backend)
+Bash
+node server.js
+Acesse no navegador:
+http://localhost:3000
