@@ -35,7 +35,7 @@ O **SimuIAdos** é uma plataforma web Full Stack que transforma o processo de es
 1. **Clone o repositório:**
    ```bash
    git clone https://github.com/GabrielSantanaDaSilva/ProjetoEstudo.git
-Instale as dependências:
+2. **Instale as dependências:**
 
 Bash
 npm install
@@ -50,9 +50,12 @@ GEMINI_API_KEY=sua_chave_aqui
 
 PORT=3000
 
-Inicie o servidor:
+3. **Inicie o servidor:**
 - entre na pasta Backend pelo Bash (cd backend)
+  
 Bash
 node server.js
-Acesse no navegador:
+
+Acesse no navegador ou Utilize a extensão live server (Você precisa iniciar o servidor pelo node para a IA funcionar) :
+
 http://localhost:3000
