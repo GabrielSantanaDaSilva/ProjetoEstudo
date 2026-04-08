@@ -34,7 +34,7 @@ O **SimuIAdos** é uma plataforma web Full Stack que transforma o processo de es
 
 1. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/SEU_USUARIO/simuiados.git](https://github.com/SEU_USUARIO/simuiados.git)
+   git clone https://github.com/GabrielSantanaDaSilva/ProjetoEstudo.git
 Instale as dependências:
 
 Bash
@@ -42,6 +42,10 @@ npm install
 Configure as variáveis de ambiente:
 Crie um arquivo .env na raiz do projeto e adicione sua chave da API do Gemini:
 
-Snippet de código
+entre no Google Studio AI -> https://aistudio.google.com/ e gere sua chave de API 
+
+Depois coloque em seu .env os seguintes codigos:
+
 GEMINI_API_KEY=sua_chave_aqui
+
 PORT=3000
